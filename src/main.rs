@@ -3,14 +3,14 @@ mod hotspot;
 mod platforms;
 
 use crate::connectivity::{Connectivity, WifiConnectionError};
-use crate::platforms::{Config, WiFi};
+use crate::platforms::{Config, Linux};
 
 fn main() -> Result<(), WifiConnectionError> {
     let config = Some(Config {
         interface: Some("wlo1"),
     });
 
-    let mut wifi = WiFi::new(config);
+    let mut wifi = Linux::new(config);
 
     match wifi.connect("CSIS_MH", "") {
         Ok(result) => println!(
