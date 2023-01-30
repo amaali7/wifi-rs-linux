@@ -6,7 +6,7 @@ use std::process::Command;
 impl Connectivity for Linux {
     /// Attempts to connect to a wireless network with a given SSID and password.
     fn connect(&mut self, ssid: &str, password: &str) -> Result<bool, WifiConnectionError> {
-        if !WiFi::is_wifi_enabled().map_err(|err| WifiConnectionError::Other { kind: err })? {
+        if !Linux::is_wifi_enabled().map_err(|err| WifiConnectionError::Other { kind: err })? {
             return Err(WifiConnectionError::Other {
                 kind: WifiError::WifiDisabled,
             });
